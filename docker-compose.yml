@@ -1,0 +1,18 @@
+services:
+  react :  
+    build : 
+      context : .
+      dockerfile : Dockerfile.dev
+    ports : 
+      - "5173:5173"
+    volumes :
+      - .:/app
+      - /app/node_modules
+  tests : 
+    build : 
+      context : .
+      dockerfile : Dockerfile.dev
+    volumes : 
+      - .:/app
+      - /app/node_modules
+    command : ["npm", "run", "test"]
